@@ -38,9 +38,15 @@
 
                         @auth
 
+                        
+                            {{-- Error Maybe occured here --}}
                         <li>
-                            <a href="{{ url('viewstatus') }}">Status Inspection</a>
+                            <a href="{{ Route('form.show',$form) }}">Status Inspection</a>
+                            {{-- <a href="{{ Route('form.index') }}">Status Inspection</a> --}}
+                           
+
                         </li>
+
 
                         @endauth
 
@@ -51,7 +57,7 @@
                             @if(Route::has('login'))
 
                             @auth
-                            <a href="{{ url('request') }}">Request Inspection</a>
+                            <a href="{{ Route('form.create') }}">Request Inspection</a>
 
                             @else
                             <a href="{{ route('login') }}">Request Inspection</a>
