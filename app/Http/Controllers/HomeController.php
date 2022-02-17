@@ -14,6 +14,7 @@ class HomeController extends Controller
 {
     public function redirect()
     {
+        
         if(Auth::id())
         {
             if(Auth::user()->usertype=='0')
@@ -68,10 +69,7 @@ class HomeController extends Controller
         $form->file=$imagename;
         
 
-        if(Auth::id())
-        {
             $form->user_id=Auth::user()->id;
-        }
 
         $form->save();
         return redirect()->back()->with('message','Inspection has been requested');
@@ -80,12 +78,10 @@ class HomeController extends Controller
 
     public function viewstatus()
     {
-        if(Auth::id())
-        {
+
             $userid=Auth::user()->id;
             $inspect=Form::where('user_id',$userid)->get();
             return view('user.viewstatus',compact('inspect'));
-        }
     }
 
     public function deleterequest($id)
