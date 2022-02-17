@@ -23,6 +23,11 @@ class Form extends Model
 
    protected $dates = ['date'];
 
+   public function user()
+   {
+       return $this->belongsTo(User::class);
+   }
+
     // public function setDate1Attribute($value)
     // {
     //     $this->attributes['date1'] = Carbon::createFromFormat('m/d/Y',$value)->format('Y-m-d');

@@ -34,6 +34,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function form()
+    {
+        return $this->hasMany(Form::class);
+    }
+
     /**
      * The attributes that should be cast.
      *

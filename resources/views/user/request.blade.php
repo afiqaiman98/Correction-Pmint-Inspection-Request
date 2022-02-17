@@ -25,7 +25,7 @@
 
     @endif
     <div class="container">
-        <form action="{{ url('upload_request') }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ Route('form.store') }}" method="POST" enctype="multipart/form-data"
             style="padding: 100px; color:black">
 
             @csrf

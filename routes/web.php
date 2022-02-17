@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,25 +32,26 @@ Route::get('/',[HomeController::class,'index']);
 
 Route::middleware('can:User')->group(function(){
     
-    Route::get('/request',[HomeController::class,'request']);
-    Route::post('/upload_request',[HomeController::class,'upload']);
-    Route::get('/viewstatus',[HomeController::class,'viewstatus']);
-    Route::get('/deleterequest/{id}',[HomeController::class,'deleterequest']);
+    Route::resource('form',FormController::class);
+    // Route::get('/request',[HomeController::class,'request']);
+    // Route::post('/upload_request',[HomeController::class,'upload']);
+    // Route::get('/viewstatus',[HomeController::class,'viewstatus']);
+    // Route::get('/deleterequest/{id}',[HomeController::class,'deleterequest']);
 
 
 
 });
 
-Route::middleware('can:Admin')->group(function(){
-    Route::get('/daftar',[AdminController::class,'daftar']);
-    Route::post('/addengineer',[AdminController::class,'addengineer']);
-    Route::get('/engineerlist',[AdminController::class,'engineerlist']);
-    Route::get('/deleteengineer/{id}',[AdminController::class,'deleteengineer']);
-    Route::get('/updateengineer/{id}',[AdminController::class,'updateengineer']);
-    Route::post('/editengineer/{id}',[AdminController::class,'editengineer']);
+// Route::middleware('can:Admin')->group(function(){
+//     Route::get('/daftar',[AdminController::class,'daftar']);
+//     Route::post('/addengineer',[AdminController::class,'addengineer']);
+//     Route::get('/engineerlist',[AdminController::class,'engineerlist']);
+//     Route::get('/deleteengineer/{id}',[AdminController::class,'deleteengineer']);
+//     Route::get('/updateengineer/{id}',[AdminController::class,'updateengineer']);
+//     Route::post('/editengineer/{id}',[AdminController::class,'editengineer']);
 
 
-});
+// });
 
 //task
 

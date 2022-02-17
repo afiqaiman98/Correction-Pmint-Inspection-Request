@@ -42,6 +42,6 @@
 
     <link rel="stylesheet" href="{{ asset('css/main.cs') }}s">
 
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <script src="{{ asset('js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
 </head>

@@ -14,6 +14,8 @@ class HomeController extends Controller
 {
     public function redirect()
     {
+        // return view('user.home');
+
         
         if(Auth::id())
         {

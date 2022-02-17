@@ -463,7 +463,7 @@
     </footer>
     <a data-scroll href="#header" id="scroll-to-top"><i class="arrow_carrot-up"></i></a>
 
-    
+    @include('user.script')
 </body>
 
 <!-- index.html  29 Nov 2019 03:30:38 GMT -->
