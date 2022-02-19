@@ -41,7 +41,7 @@
                         
                             {{-- Error Maybe occured here --}}
                         <li>
-                            <a href="{{ Route('form.show',$form) }}">Status Inspection</a>
+                            <a href="{{ Route('form.index') }}">Status Inspection</a>
                             {{-- <a href="{{ Route('form.index') }}">Status Inspection</a> --}}
                            
 

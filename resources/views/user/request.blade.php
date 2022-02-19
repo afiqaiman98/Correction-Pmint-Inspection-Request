@@ -20,8 +20,19 @@
     <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert">X</button>
         {{ session()->get('message') }}
-
     </div>
+
+        @elseif ($errors->any())
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">X</button>
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+
+
 
     @endif
     <div class="container">
@@ -31,18 +42,18 @@
             @csrf
             <div class="form-group">
                 <label>Checklist Serial No</label>
-                <input type="text" name="serial" class="form-control" placeholder="Please enter location">
+                <input type="text" name="serial" class="form-control" placeholder="Please enter location" required>
             </div>
 
             <div class="form-group">
                 <label>Location</label>
-                <input type="text" name="location" class="form-control" placeholder="Please enter location">
+                <input type="text" name="location" class="form-control" placeholder="Please enter location" required>
             </div>
 
             <div class="form-group">
                 <label>Date/Time of Inspection </label>
                 <div class='input-group date' id='datetimepicker'>
-                    <input type='text' name="date" class="form-control" />
+                    <input type='text' name="date" class="form-control" required>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -51,12 +62,12 @@
 
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Please enter location">
+                <input type="text" name="name" class="form-control" placeholder="Please enter location" required>
             </div>
 
             <div class="form-group">
                 <label>Company</label>
-                <input type="text" name="company" class="form-control" placeholder="Please enter location">
+                <input type="text" name="company" class="form-control" placeholder="Please enter location" required>
             </div>
 
 
@@ -80,7 +91,7 @@
             <div class="form-group">
                 <label>Signature</label>
                 <br>
-                <input type="file" name="file">
+                <input type="file" name="file"  required>
             </div>
 
             <div class="form-group">
@@ -91,7 +102,7 @@
 
 
     @include('user.script')
-    
+
 
 </body>
 
