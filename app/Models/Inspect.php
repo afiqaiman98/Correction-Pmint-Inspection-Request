@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Form extends Model
+class Inspect extends Model
 {
     use HasFactory;
 
@@ -27,11 +26,4 @@ class Form extends Model
    {
        return $this->belongsTo(User::class);
    }
-
-    // public function setDate1Attribute($value)
-    // {
-    //     $this->attributes['date1'] = Carbon::createFromFormat('m/d/Y',$value)->format('Y-m-d');
-    // }
-
-    
 }

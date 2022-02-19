@@ -32,16 +32,16 @@
           <th scope="col">Cancel Appointment</th>
         </tr>
 
-        @foreach ($form as $forms)
+        @foreach ($inspect as $inspects)
         <tr>
-          <td class="primary">{{ $forms->serial }}</td>
-          <td class="primary">{{ $forms->location }}</td>
-          <td class="primary">{{ $forms->date }}</td>
-          <td class="primary">{{ $forms->name }}</td>
-          <td class="primary">{{ $forms->company }}</td>
-          <td class="primary">{{ $forms->status }}</td>
+          <td class="primary">{{ $inspects->serial }}</td>
+          <td class="primary">{{ $inspects->location }}</td>
+          <td class="primary">{{ $inspects->date }}</td>
+          <td class="primary">{{ $inspects->name }}</td>
+          <td class="primary">{{ $inspects->company }}</td>
+          <td class="primary">{{ $inspects->status }}</td>
           <td class="primary">
-          <form action="{{ route('form.destroy',$forms->id) }}" method="POST">
+          <form action="{{ route('inspect.destroy',$inspects->id) }}" method="POST">
             @method('Delete')
             @csrf
             <button type="submit" class="btn btn-sm btn-danger"

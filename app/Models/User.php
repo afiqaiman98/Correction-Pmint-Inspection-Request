@@ -36,7 +36,7 @@ class User extends Authenticatable
 
     public function form()
     {
-        return $this->hasMany(Form::class);
+        return $this->hasMany(Inspect::class);
     }
 
     /**

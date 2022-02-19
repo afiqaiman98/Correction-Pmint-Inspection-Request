@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\FormController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InspectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +32,7 @@ Route::get('/',[HomeController::class,'index']);
 
 Route::middleware('can:User')->group(function(){
     
-    Route::resource('form',FormController::class);
+    Route::resource('inspect',InspectController::class);
     // Route::get('/request',[HomeController::class,'request']);
     // Route::post('/upload_request',[HomeController::class,'upload']);
     // Route::get('/viewstatus',[HomeController::class,'viewstatus']);

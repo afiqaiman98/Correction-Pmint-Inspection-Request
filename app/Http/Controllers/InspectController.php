@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Form;
+use App\Models\Inspect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class FormController extends Controller
+class InspectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class FormController extends Controller
     public function index()
     {
         $userid=Auth::user()->id;
-            $form=Form::where('user_id',$userid)->get();
-            return view('user.viewstatus',compact('form'));
+        $inspect=Inspect::where('user_id',$userid)->get();
+        return view('user.inspect.view',compact('inspect'));
     }
 
     /**
@@ -27,8 +27,7 @@ class FormController extends Controller
      */
     public function create()
     {
-        return view('user.request');
-        
+        return view('user.inspect.request');
     }
 
     /**
@@ -49,19 +48,19 @@ class FormController extends Controller
             // 'image' => ['required'],
         ]);
 
-        $form = new Form;
-        $form->serial=$request->serial;
-        $form->location=$request->location;
-        $form->date=$request->date;
-        $form->name=$request->name;
-        $form->company=$request->company;
-        $form->status='In Progress';
+        $inspect = new Inspect();
+        $inspect->serial=$request->serial;
+        $inspect->location=$request->location;
+        $inspect->date=$request->date;
+        $inspect->name=$request->name;
+        $inspect->company=$request->company;
+        $inspect->status='In Progress';
         $image=$request->file;
         $imagename=md5(microtime()).'.'.$image->getClientOriginalExtension();
         $request->file->move('signatureimage',$imagename);
-        $form->file=$imagename;
-        $form->user_id=Auth::user()->id;
-        $form->save();
+        $inspect->file=$imagename;
+        $inspect->user_id=Auth::user()->id;
+        $inspect->save();
             return redirect()->back()->with('message','Inspection has been requested');
 
     }
@@ -72,11 +71,9 @@ class FormController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-     //How to show list of form request by user???
-    public function show(Form $form)
+    public function show($id)
     {
-        return view('user.viewstatus')->with('form',$form);
+        //
     }
 
     /**
@@ -110,11 +107,9 @@ class FormController extends Controller
      */
     public function destroy($id)
     {
-        //retrieve form
-        $forms = Form::find($id);
-        //delete form
-        $forms->delete();
-        //reroute to form list
-        return redirect()->route('form.index');
+        $inspects = Inspect::find($id);
+        $inspects->delete();
+        return redirect()->route('inspect.index');
+
     }
 }
