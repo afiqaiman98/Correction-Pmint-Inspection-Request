@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'usertype',
     ];
 
     /**
@@ -33,6 +34,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function form()
+    {
+        return $this->hasMany(Inspect::class);
+    }
+
     /**
      * The attributes that should be cast.
      *
@@ -41,4 +47,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function hasRole($role)
+    {
+        if ($this->usertype == $role) {
+            return true;
+        }
+
+        return false;
+    }
 }
