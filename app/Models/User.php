@@ -50,7 +50,7 @@ class User extends Authenticatable
 
     public function hasRole($role)
     {
-        if($this->usertype == $role){
+        if ($this->usertype == $role) {
             return true;
         }
 

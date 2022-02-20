@@ -41,12 +41,12 @@
           <td class="primary">{{ $inspects->company }}</td>
           <td class="primary">{{ $inspects->status }}</td>
           <td class="primary">
-          <form action="{{ route('inspect.destroy',$inspects->id) }}" method="POST">
-            @method('Delete')
-            @csrf
-            <button type="submit" class="btn btn-sm btn-danger"
-              onclick="return confirm('Are you sure to cancel?')">Delete</button>
-          </form>
+            <form action="{{ route('inspect.destroy',$inspects->id) }}" method="POST">
+              @method('Delete')
+              @csrf
+              <button type="submit" class="btn btn-sm btn-danger"
+                onclick="return confirm('Are you sure to cancel?')">Delete</button>
+            </form>
           </td>
 
           {{-- <td class="primary"><a class="btn btn-danger" onclick="return confirm('Sungguh nk delete ea???')"

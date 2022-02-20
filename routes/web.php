@@ -25,21 +25,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
-Route::get('/home',[HomeController::class,'redirect']);
-Route::get('/',[HomeController::class,'index']);
+Route::get('/home', [HomeController::class, 'redirect']);
+Route::get('/', [HomeController::class, 'index']);
 
-Route::middleware('can:User')->group(function(){
-    
-    Route::resource('inspect',InspectController::class);
-    // Route::get('/request',[HomeController::class,'request']);
-    // Route::post('/upload_request',[HomeController::class,'upload']);
-    // Route::get('/viewstatus',[HomeController::class,'viewstatus']);
-    // Route::get('/deleterequest/{id}',[HomeController::class,'deleterequest']);
+Route::middleware('can:User')->group(function () {
 
-
-
+    Route::resource('inspect', InspectController::class);
 });
 
 // Route::middleware('can:Admin')->group(function(){
@@ -54,10 +47,3 @@ Route::middleware('can:User')->group(function(){
 // });
 
 //task
-
-
-
-
-
-
-

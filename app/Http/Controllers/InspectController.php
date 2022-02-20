@@ -15,9 +15,9 @@ class InspectController extends Controller
      */
     public function index()
     {
-        $userid=Auth::user()->id;
-        $inspect=Inspect::where('user_id',$userid)->get();
-        return view('user.inspect.view',compact('inspect'));
+        $userid = Auth::user()->id;
+        $inspect = Inspect::where('user_id', $userid)->get();
+        return view('user.inspect.view', compact('inspect'));
     }
 
     /**
@@ -44,25 +44,24 @@ class InspectController extends Controller
             'date' => ['required'],
             'name' => ['required', 'string', 'max:255'],
             'company' => ['required', 'string', 'max:255'],
-            'file' => ['required','image','mimes:jpg,png,jpeg,gif,svg','max:2048','dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'],
+            'file' => ['required', 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:2048', 'dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'],
             // 'image' => ['required'],
         ]);
 
         $inspect = new Inspect();
-        $inspect->serial=$request->serial;
-        $inspect->location=$request->location;
-        $inspect->date=$request->date;
-        $inspect->name=$request->name;
-        $inspect->company=$request->company;
-        $inspect->status='In Progress';
-        $image=$request->file;
-        $imagename=md5(microtime()).'.'.$image->getClientOriginalExtension();
-        $request->file->move('signatureimage',$imagename);
-        $inspect->file=$imagename;
-        $inspect->user_id=Auth::user()->id;
+        $inspect->serial = $request->serial;
+        $inspect->location = $request->location;
+        $inspect->date = $request->date;
+        $inspect->name = $request->name;
+        $inspect->company = $request->company;
+        $inspect->status = 'In Progress';
+        $image = $request->file;
+        $imagename = md5(microtime()) . '.' . $image->getClientOriginalExtension();
+        $request->file->move('signatureimage', $imagename);
+        $inspect->file = $imagename;
+        $inspect->user_id = Auth::user()->id;
         $inspect->save();
-            return redirect()->back()->with('message','Inspection has been requested');
-
+        return redirect()->back()->with('message', 'Inspection has been requested');
     }
 
     /**
@@ -110,6 +109,5 @@ class InspectController extends Controller
         $inspects = Inspect::find($id);
         $inspects->delete();
         return redirect()->route('inspect.index');
-
     }
 }

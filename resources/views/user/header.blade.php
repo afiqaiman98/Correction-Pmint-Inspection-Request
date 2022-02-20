@@ -3,7 +3,8 @@
         <div class="container">
             <div class="primary-header-inner">
                 <div class="header-logo">
-                    <a href="{{ url('/home') }}"><img height=100px width=100px src="{{ asset('img/pmint.jpg') }}" alt="Pmint"></a>
+                    <a href="{{ url('/home') }}"><img height=100px width=100px src="{{ asset('img/pmint.jpg') }}"
+                            alt="Pmint"></a>
                 </div>
                 <div class="header-menu-wrap">
                     <ul class="dl-menu">
@@ -12,18 +13,18 @@
                                 <li><a href={{ url('/home') }}>Home Default</a></li>
                             </ul>
                         </li>
-                        
+
 
                         @if(Route::has('login'))
 
                         @auth
 
-                        
-                            {{-- Error Maybe occured here --}}
+
+                        {{-- Error Maybe occured here --}}
                         <li>
                             <a href="{{ route('inspect.index')}}">Status Inspection</a>
                             {{-- <a href="{{ Route('form.index') }}">Status Inspection</a> --}}
-                           
+
 
                         </li>
 

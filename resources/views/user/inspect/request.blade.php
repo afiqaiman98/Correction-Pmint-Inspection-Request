@@ -22,15 +22,15 @@
         {{ session()->get('message') }}
     </div>
 
-        @elseif ($errors->any())
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert">X</button>
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    @elseif ($errors->any())
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">X</button>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
 
 
 
@@ -91,7 +91,7 @@
             <div class="form-group">
                 <label>Signature</label>
                 <br>
-                <input type="file" name="file"  required>
+                <input type="file" name="file" required>
             </div>
 
             <div class="form-group">
