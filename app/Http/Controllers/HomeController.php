@@ -16,7 +16,8 @@ class HomeController extends Controller
     {
         // return view('user.home');
 
-
+        //Login User->user page
+        //Login Admin->admin page
         if (Auth::id()) {
             if (Auth::user()->usertype == '0') {
                 return view('user.home');
