@@ -18,7 +18,7 @@ class EngineerController extends Controller
     public function index()
     {
         $engineer = User::where('usertype', 'engineer')->get();
-        return view('admin.Engineer.view', compact('engineer'));
+        return view('admin.engineer.view', compact('engineer'));
     }
 
     /**
@@ -28,7 +28,7 @@ class EngineerController extends Controller
      */
     public function create()
     {
-        return view('admin.Engineer.create');
+        return view('admin.engineer.create');
     }
 
     /**
@@ -74,7 +74,7 @@ class EngineerController extends Controller
     public function edit($id)
     {
         $engineer = User::find($id);
-        return view('admin.Engineer.edit', compact('engineer'));
+        return view('admin.engineer.edit', compact('engineer'));
     }
     /**
      * Update the specified resource in storage.
