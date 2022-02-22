@@ -72,20 +72,20 @@
 
 
             {{-- To choose Enginner for futher deveploment --}}
-            {{-- <div class="form-group">
-                <label>Engineer For Inspection</label>
-                <select name="engineer" class="form-control">
+            <div class="form-group">
 
-                    <option class="hidden">-Select Engineer-</option>
+
+                <label>Engineer For Inspection</label>
+                <select name="engineer" class="form-select">
+
                     @foreach ($engineer as $engineers)
+                    <option class="hidden">-Select Engineer-</option>
                     <option value="{{ $engineers->name }}">
                         {{ $engineers->name }}
                     </option>
-
-
                     @endforeach
                 </select>
-            </div> --}}
+            </div>
 
 
             <div class="form-group">

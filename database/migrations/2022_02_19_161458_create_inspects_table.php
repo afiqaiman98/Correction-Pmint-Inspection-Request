@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('date')->nullable();
             $table->string('name')->nullable();
             $table->string('company')->nullable();
+            $table->string('engineer')->nullable();
             $table->string('file')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();

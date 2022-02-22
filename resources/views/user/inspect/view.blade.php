@@ -28,6 +28,7 @@
           <th scope="col">Date/Time of Inspection</th>
           <th scope="col">Name</th>
           <th scope="col">Company</th>
+          <th scope="col">Engineer</th>
           <th scope="col">Status</th>
           <th scope="col">Cancel Appointment</th>
         </tr>
@@ -39,6 +40,7 @@
           <td class="primary">{{ $inspects->date }}</td>
           <td class="primary">{{ $inspects->name }}</td>
           <td class="primary">{{ $inspects->company }}</td>
+          <td class="primary">{{ $inspects->engineer }}</td>
           <td class="primary">{{ $inspects->status }}</td>
           <td class="primary">
             <form action="{{ route('inspect.destroy',$inspects->id) }}" method="POST">
