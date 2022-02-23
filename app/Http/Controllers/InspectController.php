@@ -114,8 +114,9 @@ class InspectController extends Controller
      */
     public function destroy($id)
     {
-        $inspects = Inspect::find($id);
-        $inspects->delete();
+        // $inspects = Inspect::find($id);
+        // $inspects->delete();
+        Inspect::destroy($id);
         return redirect()->route('inspect.index');
     }
 }
