@@ -20,9 +20,9 @@ class InspectController extends Controller
         // $engineer = User::where('usertype', 'engineer')->get();
         // $inspect = Inspect::where('user_id', $userid)->orWhere('usertype', 'inspect')->get();
         $userid = Auth::user()->id;
-        $inspect = Inspect::where('user_id', $userid)->get();
+        $inspects = Inspect::where('createdBy', $userid)->get();
 
-        return view('user.inspect.view', compact('inspect'));
+        return view('user.inspect.view', compact('inspects'));
     }
 
     /**
@@ -61,13 +61,13 @@ class InspectController extends Controller
         $inspect->date = $request->date;
         $inspect->name = $request->name;
         $inspect->company = $request->company;
-        $inspect->engineer = $request->engineer;
+        $inspect->engineerId = $request->engineer;
         $inspect->status = 'In Progress';
         $image = $request->file;
         $imagename = md5(microtime()) . '.' . $image->getClientOriginalExtension();
         $request->file->move('signatureimage', $imagename);
         $inspect->file = $imagename;
-        $inspect->user_id = Auth::user()->id;
+        $inspect->createdBy = Auth::user()->id;
         $inspect->save();
         return redirect()->back()->with('message', 'Inspection has been requested');
     }
