@@ -49,13 +49,13 @@
 
                         {{-- {{ dd($engineer) }} --}}
 
-                        @foreach ($engineers as $engineer)
+                        @foreach ($engineer as $engineers)
 
                         <tr>
-                          <td>{{ $engineer->name }}</td>
-                          <td>{{ $engineer->email }}</td>
+                          <td>{{ $engineers->name }}</td>
+                          <td>{{ $engineers->email }}</td>
                           <td class="table-primary">
-                            <form action="{{ route('engineer.destroy',$engineer->id) }}" method="POST">
+                            <form action="{{ route('engineer.destroy',$engineers->id) }}" method="POST">
                               @method('Delete')
                               @csrf
                               <button type="submit" class="btn btn-danger"
@@ -63,7 +63,7 @@
                             </form>
                           </td>
                           <td class="table-primary">
-                            <a class=" btn btn-info" href="{{ route('engineer.edit',$engineer->id) }}">Edit</a>
+                            <a class=" btn btn-info" href="{{ route('engineer.edit',$engineers->id) }}">Edit</a>
                           </td>
                         </tr>
 

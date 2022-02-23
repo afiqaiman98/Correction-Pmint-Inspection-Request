@@ -17,8 +17,8 @@ class EngineerController extends Controller
      */
     public function index()
     {
-        $engineers = User::where('usertype', 'engineer')->get();
-        return view('admin.engineer.view', compact('engineers'));
+        $engineer = User::where('usertype', 'engineer')->get();
+        return view('admin.engineer.view', compact('engineer'));
     }
 
     /**
