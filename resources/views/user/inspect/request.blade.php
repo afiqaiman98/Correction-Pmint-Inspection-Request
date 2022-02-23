@@ -81,10 +81,10 @@
                 <select name="engineer" class="form-select">
 
                     <option class="hidden">-Select Engineer-</option>
-                    @foreach ($engineer as $engineers)
+                    @foreach ($engineers as $engineer)
                     {{-- {{ dd($engineers) }} --}}
-                    <option value="{{ $engineers->id }}">
-                        {{ $engineers->name }}
+                    <option value="{{ $engineer->id }}">
+                        {{ $engineer->name }}
                     </option>
                     @endforeach
                 </select>

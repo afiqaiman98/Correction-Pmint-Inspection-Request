@@ -32,8 +32,8 @@ class InspectController extends Controller
      */
     public function create()
     {
-        $engineer = User::where('usertype', 'engineer')->get();
-        return view('user.inspect.request', compact('engineer'));
+        $engineers = User::where('usertype', 'engineer')->get();
+        return view('user.inspect.request', compact('engineers'));
     }
 
     /**
