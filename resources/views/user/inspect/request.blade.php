@@ -72,20 +72,19 @@
 
 
             {{-- To choose Enginner for futher deveploment --}}
-            {{-- <div class="form-group">
+            <div class="form-group">
                 <label>Engineer For Inspection</label>
-                <select name="engineer" class="form-control">
+                <select name="engineer" class="form-control" style="height: auto!important">
 
                     <option class="hidden">-Select Engineer-</option>
-                    @foreach ($engineer as $engineers)
-                    <option value="{{ $engineers->name }}">
-                        {{ $engineers->name }}
+                    @foreach ($engineers as $engineer)
+                    {{-- {{ dd($engineers) }} --}}
+                    <option value="{{ $engineer->id }}">
+                        {{ $engineer->name }}
                     </option>
-
-
                     @endforeach
                 </select>
-            </div> --}}
+            </div>
 
 
             <div class="form-group">

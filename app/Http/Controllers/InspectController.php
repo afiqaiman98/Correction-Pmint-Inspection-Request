@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inspect;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,9 +16,13 @@ class InspectController extends Controller
      */
     public function index()
     {
+
+        // $engineer = User::where('usertype', 'engineer')->get();
+        // $inspect = Inspect::where('user_id', $userid)->orWhere('usertype', 'inspect')->get();
         $userid = Auth::user()->id;
-        $inspect = Inspect::where('user_id', $userid)->get();
-        return view('user.inspect.view', compact('inspect'));
+        $inspects = Inspect::where('createdBy', $userid)->get();
+
+        return view('user.inspect.view', compact('inspects'));
     }
 
     /**
@@ -27,7 +32,8 @@ class InspectController extends Controller
      */
     public function create()
     {
-        return view('user.inspect.request');
+        $engineers = User::where('usertype', 'engineer')->get();
+        return view('user.inspect.request', compact('engineers'));
     }
 
     /**
@@ -44,6 +50,7 @@ class InspectController extends Controller
             'date' => ['required'],
             'name' => ['required', 'string', 'max:255'],
             'company' => ['required', 'string', 'max:255'],
+            'engineer' => ['required', 'string', 'max:255'],
             'file' => ['required', 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:2048', 'dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'],
             // 'image' => ['required'],
         ]);
@@ -54,12 +61,13 @@ class InspectController extends Controller
         $inspect->date = $request->date;
         $inspect->name = $request->name;
         $inspect->company = $request->company;
+        $inspect->engineerId = $request->engineer;
         $inspect->status = 'In Progress';
         $image = $request->file;
         $imagename = md5(microtime()) . '.' . $image->getClientOriginalExtension();
         $request->file->move('signatureimage', $imagename);
         $inspect->file = $imagename;
-        $inspect->user_id = Auth::user()->id;
+        $inspect->createdBy = Auth::user()->id;
         $inspect->save();
         return redirect()->back()->with('message', 'Inspection has been requested');
     }
@@ -106,8 +114,7 @@ class InspectController extends Controller
      */
     public function destroy($id)
     {
-        $inspects = Inspect::find($id);
-        $inspects->delete();
+        User::destroy($id);
         return redirect()->route('inspect.index');
     }
 }

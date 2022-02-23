@@ -28,20 +28,22 @@
           <th scope="col">Date/Time of Inspection</th>
           <th scope="col">Name</th>
           <th scope="col">Company</th>
+          <th scope="col">Engineer</th>
           <th scope="col">Status</th>
           <th scope="col">Cancel Appointment</th>
         </tr>
 
-        @foreach ($inspect as $inspects)
+        @foreach ($inspects as $inspect)
         <tr>
-          <td class="primary">{{ $inspects->serial }}</td>
-          <td class="primary">{{ $inspects->location }}</td>
-          <td class="primary">{{ $inspects->date }}</td>
-          <td class="primary">{{ $inspects->name }}</td>
-          <td class="primary">{{ $inspects->company }}</td>
-          <td class="primary">{{ $inspects->status }}</td>
+          <td class="primary">{{ $inspect->serial }}</td>
+          <td class="primary">{{ $inspect->location }}</td>
+          <td class="primary">{{ $inspect->date }}</td>
+          <td class="primary">{{ $inspect->name }}</td>
+          <td class="primary">{{ $inspect->company }}</td>
+          <td class="primary">{{ $inspect->engineer()->first()->name }}</td>
+          <td class="primary">{{ $inspect->status }}</td>
           <td class="primary">
-            <form action="{{ route('inspect.destroy',$inspects->id) }}" method="POST">
+            <form action="{{ route('inspect.destroy',$inspect->id) }}" method="POST">
               @method('Delete')
               @csrf
               <button type="submit" class="btn btn-sm btn-danger"

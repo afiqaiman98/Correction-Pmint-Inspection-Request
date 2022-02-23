@@ -15,15 +15,16 @@ class Inspect extends Model
         'date',
         'name',
         'company',
+        'engineerId',
         'status',
         'file',
-        'user_id',
+        'createdBy',
     ];
 
     protected $dates = ['date'];
 
-    public function user()
+    public function engineer()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'engineerId');
     }
 }

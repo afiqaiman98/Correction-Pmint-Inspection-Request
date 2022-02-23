@@ -53,14 +53,17 @@
                         @if(Route::has('login'))
 
                         @auth
-                        <li>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();this.closest('form').submit();">
-                                    Logout
-                                </a>
-                            </form>
+                        <li><a href="#">{{ Auth::user()->name }}</a>
+                            <ul>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();this.closest('form').submit();">
+                                        Logout
+                                    </a>
+                                </form>
+
+                            </ul>
                         </li>
 
                         @else
