@@ -34,9 +34,9 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function form()
+    public function inspects()
     {
-        return $this->hasMany(Inspect::class);
+        return $this->hasMany(Inspect::class, 'engineerId');
     }
 
     /**
