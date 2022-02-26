@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CubaController;
 use App\Http\Controllers\EngineerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InspectController;
+use App\Http\Controllers\StatusController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,12 +35,14 @@ Route::get('/home', [HomeController::class, 'redirect']);
 Route::get('/', [HomeController::class, 'index']);
 
 Route::middleware('can:User')->group(function () {
-
+    
     Route::resource('inspect', InspectController::class);
 });
 
-Route::middleware('can:Admin')->group(function(){
-    Route::resource('engineer',EngineerController::class);
+Route::middleware('can:Admin')->group(function () {
+    Route::resource('engineer', EngineerController::class);
+    Route::get('/index',[UserController::class,'index']);
+    // Route::get('/try',[TryController::class,''])
     // Route::get('/daftar',[AdminController::class,'daftar']);
     // Route::post('/addengineer',[AdminController::class,'addengineer']);
     // Route::get('/engineerlist',[AdminController::class,'engineerlist']);
@@ -47,5 +52,3 @@ Route::middleware('can:Admin')->group(function(){
 
 
 });
-
-

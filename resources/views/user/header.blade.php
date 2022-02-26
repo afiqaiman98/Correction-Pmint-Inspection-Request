@@ -11,6 +11,7 @@
                         <li><a href="{{ url('/home') }}">Home</a>
                             <ul>
                                 <li><a href={{ url('/home') }}>Home Default</a></li>
+                                <li><a href={{ url('/home') }}>Home Default</a></li>
                             </ul>
                         </li>
 
