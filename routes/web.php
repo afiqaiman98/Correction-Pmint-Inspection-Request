@@ -4,8 +4,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CubaController;
 use App\Http\Controllers\EngineerController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\InspectController;
-use App\Http\Controllers\StatusController;
+use App\Http\Controllers\User\InspectController as UserInspectController;
+use App\Http\Controllers\Engineer\InspectController as EngineerInspectController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,14 +34,24 @@ require __DIR__ . '/auth.php';
 Route::get('/home', [HomeController::class, 'redirect']);
 Route::get('/', [HomeController::class, 'index']);
 
-Route::middleware('can:User')->group(function () {
-    
-    Route::resource('inspect', InspectController::class);
+Route::middleware('can:User')->name('user.')->group(function () {
+
+    Route::resource('inspect', UserInspectController::class);
 });
+
+Route::middleware('can:UserAndEngineer')->name('engineer.')->group(function () {
+
+    // Route::get('/index', EngineerInspectController::class, 'index');
+    Route::get('/index/engineer', [EngineerInspectController::class, 'index'])->name('inspect.index');
+    Route::get('/try/engineer', [EngineerInspectController::class, 'try'])->name('inspect.try');
+    Route::post('/store/engineer/{id}', [EngineerInspectController::class, 'store'])->name('inspect.store');
+});
+
+// Route::middleware('can:UserAndEngineer')
 
 Route::middleware('can:Admin')->group(function () {
     Route::resource('engineer', EngineerController::class);
-    Route::get('/index',[UserController::class,'index']);
+    Route::get('/index', [UserController::class, 'index']);
     // Route::get('/try',[TryController::class,''])
     // Route::get('/daftar',[AdminController::class,'daftar']);
     // Route::post('/addengineer',[AdminController::class,'addengineer']);
