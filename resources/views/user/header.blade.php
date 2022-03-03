@@ -23,7 +23,7 @@
 
                         {{-- Error Maybe occured here --}}
                         <li>
-                            <a href="{{ route('inspect.index')}}">Status Inspection</a>
+                            <a href="{{ route('user.inspect.index')}}">Status Inspection</a>
                             {{-- <a href="{{ Route('form.index') }}">Status Inspection</a> --}}
 
 
@@ -39,7 +39,7 @@
                             @if(Route::has('login'))
 
                             @auth
-                            <a href="{{ route('inspect.create') }}">Request Inspection</a>
+                            <a href="{{ route('user.inspect.create') }}">Request Inspection</a>
 
                             @else
                             <a href="{{ route('login') }}">Request Inspection</a>
