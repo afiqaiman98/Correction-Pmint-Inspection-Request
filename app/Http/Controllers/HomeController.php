@@ -14,13 +14,13 @@ class HomeController extends Controller
 {
     public function redirect()
     {
-        // return view('user.home');
 
-        //Login User->user page
-        //Login Admin->admin page
         if (Auth::id()) {
+
             if (Auth::user()->usertype == '0') {
                 return view('user.home');
+            } elseif (Auth::user()->usertype == 'engineer') {
+                return view('engineer.home');
             } else {
                 return view('admin.home');
             }

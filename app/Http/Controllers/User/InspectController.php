@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Models\Inspect;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,12 +17,8 @@ class InspectController extends Controller
      */
     public function index()
     {
-
-        // $engineer = User::where('usertype', 'engineer')->get();
-        // $inspect = Inspect::where('user_id', $userid)->orWhere('usertype', 'inspect')->get();
         $userid = Auth::user()->id;
         $inspects = Inspect::where('createdBy', $userid)->get();
-
         return view('user.inspect.view', compact('inspects'));
     }
 
@@ -73,6 +70,17 @@ class InspectController extends Controller
     }
 
     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        Inspect::destroy($id);
+        return redirect()->route('user.inspect.index');
+    }
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -104,17 +112,5 @@ class InspectController extends Controller
     public function update(Request $request, $id)
     {
         //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        Inspect::destroy($id);
-        return redirect()->route('inspect.index');
     }
 }
