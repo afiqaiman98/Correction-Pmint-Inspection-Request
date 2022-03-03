@@ -56,4 +56,13 @@ class User extends Authenticatable
 
         return false;
     }
+
+    public function hasRoles($roles)
+    {
+        if (in_array($this->usertype, $roles)) {
+            return true;
+        }
+
+        return false;
+    }
 }
