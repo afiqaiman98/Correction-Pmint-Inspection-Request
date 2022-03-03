@@ -43,7 +43,7 @@
           <td class="primary">{{ $inspect->engineer()->first()->name }}</td>
           <td class="primary">{{ $inspect->status }}</td>
           <td class="primary">
-            <form action="{{ route('inspect.destroy',$inspect->id) }}" method="POST">
+            <form action="{{ route('user.inspect.destroy',$inspect->id) }}" method="POST">
               @method('Delete')
               @csrf
               <button type="submit" class="btn btn-sm btn-danger"
