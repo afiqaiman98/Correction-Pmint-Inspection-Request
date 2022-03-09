@@ -15,18 +15,20 @@ class InspectController extends Controller
         return view('engineer.view',compact('inspects'));
     }
 
-    public function try()
-    {
-        return view('engineer.try');
-    }
 
     public function store(Request $request, $id)
     {
         $inspect = Inspect::find($id);
         $inspect->status = $request->status;
+        $inspect->comment = $request->comment;
         $inspect->save();
         return redirect()->route('engineer.inspect.index');
 
     }
 
+    public function show($id)
+    {
+        $inspect = Inspect::find($id);
+        return view('engineer.show',compact('inspect'));
+    }
 }

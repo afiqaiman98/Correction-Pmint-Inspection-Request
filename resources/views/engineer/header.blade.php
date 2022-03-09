@@ -20,15 +20,14 @@
 
                         @auth
 
+                        
+
 
                         <li>
                             <a href="{{ route('engineer.inspect.index')}}">Status Inspection</a>
 
                         </li>
-                        <li>
-                            <a href="{{ route('engineer.inspect.try') }}">Try</a>
 
-                        </li>
 
 
                         @endauth

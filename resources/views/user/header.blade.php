@@ -24,7 +24,7 @@
                         {{-- Error Maybe occured here --}}
                         <li>
                             <a href="{{ route('user.inspect.index')}}">Status Inspection</a>
-                            {{-- <a href="{{ Route('form.index') }}">Status Inspection</a> --}}
+                            
 
 
                         </li>

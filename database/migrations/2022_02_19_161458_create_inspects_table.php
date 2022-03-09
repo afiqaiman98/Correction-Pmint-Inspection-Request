@@ -25,6 +25,7 @@ return new class extends Migration
             $table->foreign('engineerId')->references('id')->on('users');
             $table->string('file')->nullable();
             $table->string('status')->nullable();
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }
