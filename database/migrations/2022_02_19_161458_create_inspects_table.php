@@ -18,7 +18,9 @@ return new class extends Migration
             $table->foreignId('createdBy')->constrained('users');
             $table->string('serial')->nullable();
             $table->string('location')->nullable();
-            $table->date('date')->nullable();
+            $table->dateTime('date')->nullable();
+            // $table->date('date')->nullable();
+            // $table->time('time')->nullable();
             $table->string('name')->nullable();
             $table->string('company')->nullable();
             $table->unsignedBigInteger('engineerId');

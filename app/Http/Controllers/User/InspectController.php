@@ -55,7 +55,8 @@ class InspectController extends Controller
         $inspect = new Inspect();
         $inspect->serial = $request->serial;
         $inspect->location = $request->location;
-        $inspect->date = $request->date;
+        $inspect->date = date('Y-m-d H:i:s', strtotime($request->date));
+        // $inspect->time = time('H:i:s', strtotime($request->date));
         $inspect->name = $request->name;
         $inspect->company = $request->company;
         $inspect->engineerId = $request->engineer;

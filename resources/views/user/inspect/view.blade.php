@@ -37,7 +37,9 @@
         <tr>
           <td class="primary">{{ $inspect->serial }}</td>
           <td class="primary">{{ $inspect->location }}</td>
-          <td class="primary">{{ $inspect->date }}</td>
+          {{-- <td class="primary">{{ $inspect->date }}</td> --}}
+          <td>{{ Carbon\Carbon::parse($inspect->date)->format('d-m-Y ') }}/{{
+            Carbon\Carbon::parse($inspect->date)->format('H:i') }}</td>
           <td class="primary">{{ $inspect->name }}</td>
           <td class="primary">{{ $inspect->company }}</td>
           <td class="primary">{{ $inspect->engineer()->first()->name }}</td>
