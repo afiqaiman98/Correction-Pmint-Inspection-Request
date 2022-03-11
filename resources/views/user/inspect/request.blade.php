@@ -36,7 +36,7 @@
 
     @endif
     <div class="container">
-        <form action="{{ route('inspect.store') }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('user.inspect.store') }}" method="POST" enctype="multipart/form-data"
             style="padding: 100px; color:black">
 
             @csrf
