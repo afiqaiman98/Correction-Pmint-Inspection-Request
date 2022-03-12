@@ -100,7 +100,9 @@ class InspectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $inspect = Inspect::find($id);
+
+        return view('user.inspect.edit', compact('inspect'));
     }
 
     /**
@@ -112,6 +114,13 @@ class InspectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $inspect = Inspect::find($id);
+        $inspect->serial = $request->serial;
+        $inspect->location = $request->location;
+        $inspect->date = date('Y-m-d H:i:s', strtotime($request->date));
+        $inspect->name = $request->name;
+        $inspect->company = $request->company;
+        $inspect->save();
+        return response("GOOD", 200);
     }
 }

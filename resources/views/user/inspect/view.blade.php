@@ -45,6 +45,7 @@
           <td class="primary">{{ $inspect->engineer()->first()->name }}</td>
           <td class="primary">{{ $inspect->status }}</td>
           <td class="primary">
+            <a class="btn btn-sm btn-primary" href={{ route('user.inspect.edit', $inspect->id) }}>Update</a
             <form action="{{ route('user.inspect.destroy',$inspect->id) }}" method="POST">
               @method('Delete')
               @csrf
