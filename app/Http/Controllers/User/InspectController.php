@@ -89,7 +89,8 @@ class InspectController extends Controller
      */
     public function show($id)
     {
-        //
+        $inspect = Inspect::find($id);
+        return view('user.inspect.show',compact('inspect'));
     }
 
     /**

@@ -23,38 +23,62 @@
     <div allign="center">
       <table class="table">
         <tr class="table-dark">
-          <th scope="col">Chechklist Serial No</th>
           <th scope="col">Location</th>
           <th scope="col">Date/Time of Inspection</th>
           <th scope="col">Name</th>
-          <th scope="col">Company</th>
           <th scope="col">Engineer</th>
           <th scope="col">Status</th>
-          <th scope="col">Cancel Appointment</th>
+          <th scope="col">Action</th>
         </tr>
 
         @foreach ($inspects as $inspect)
         <tr>
-          <td class="primary">{{ $inspect->serial }}</td>
           <td class="primary">{{ $inspect->location }}</td>
           {{-- <td class="primary">{{ $inspect->date }}</td> --}}
           <td>{{ Carbon\Carbon::parse($inspect->date)->format('d-m-Y ') }}/{{
             Carbon\Carbon::parse($inspect->date)->format('H:i') }}</td>
           <td class="primary">{{ $inspect->name }}</td>
-          <td class="primary">{{ $inspect->company }}</td>
           <td class="primary">{{ $inspect->engineer()->first()->name }}</td>
-          <td class="primary">{{ $inspect->status }}</td>
+          <td class="primary"><span @class(['badge badge-primary'=>
+              $inspect->status == "In Progress", 'badge
+              badge-success'
+              =>
+              $inspect->status == "Approved",'badge
+              badge-danger'
+              =>
+              $inspect->status ==
+              "Rejected"]) >{{
+              $inspect->status }}</span></td>
           <td class="primary">
-            <form action="{{ route('user.inspect.destroy',$inspect->id) }}" method="POST">
-              @method('Delete')
-              @csrf
-              <button type="submit" class="btn btn-sm btn-danger"
-                onclick="return confirm('Are you sure to cancel?')">Delete</button>
-            </form>
+
+            <div class="d-flex align-items-center">
+              <a href="{{ route('user.inspect.show',$inspect->id)}}" type="button" class="btn btn-info btn-sm ">
+                Detail
+                <i class="fa fa-eye"></i>
+              </a>
+              <form action="{{ route('user.inspect.destroy',$inspect->id) }}" method="POST">
+                @method('Delete')
+                @csrf
+                @if ($inspect->status == 'In Progress')
+
+                <button type="submit" class="btn btn-danger btn-sm"
+                  onclick="return confirm('Are you sure to cancel inspection request?')">Cancel<i
+                    class="fa fa-trash"></i></button>
+
+                @else
+                <button title="Cannot delete approved inspection" disabled type="submit"
+                  class="btn btn-danger btn-sm">Cancel<i class="fa fa-trash"></i></button>
+
+                @endif
+              </form>
+
+
+            </div>
+
+
           </td>
 
-          {{-- <td class="primary"><a class="btn btn-danger" onclick="return confirm('Sungguh nk delete ea???')"
-              href="{{ route('form.destroy',$forms->id]) }}">Cancel</a></td> --}}
+
 
 
         </tr>

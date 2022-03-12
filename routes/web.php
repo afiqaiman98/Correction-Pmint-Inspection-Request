@@ -39,12 +39,12 @@ Route::middleware('can:User')->name('user.')->group(function () {
     Route::resource('inspect', UserInspectController::class);
 });
 
-Route::middleware('can:UserAndEngineer')->name('engineer.')->group(function () {
+Route::middleware('can:Engineer')->name('engineer.')->group(function () {
 
     // Route::get('/index', EngineerInspectController::class, 'index');
     Route::get('/index/engineer', [EngineerInspectController::class, 'index'])->name('inspect.index');
     Route::post('/store/engineer/{id}', [EngineerInspectController::class, 'store'])->name('inspect.store');
-    Route::get('/show/engineer/{id}',[EngineerInspectController::class,'show'])->name('inspect.show');
+    Route::get('/show/engineer/{id}', [EngineerInspectController::class, 'show'])->name('inspect.show');
 });
 
 // Route::middleware('can:UserAndEngineer')
