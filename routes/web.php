@@ -62,3 +62,5 @@ Route::middleware('can:Admin')->group(function () {
 
 
 });
+
+Route::get("timeline/{id}", [EngineerInspectController::class,"timeline"])->name("admin.view.timeline");

@@ -35,18 +35,20 @@
 
     @endif
     <div class="container">
-        <form action="{{ route('user.inspect.store') }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('user.inspect.update', $inspect->id) }}" method="POST"
             style="padding: 100px; color:black">
 
             @csrf
+            @method('PUT')
+            <input type="hidden" name="engineer" class="form-control" value="{{ $inspect->engineerId }}" readonly>
             <div class="form-group">
                 <label>Checklist Serial No</label>
-                <input type="text" name="serial" class="form-control" placeholder="Please enter location" required>
+                <input type="text" name="serial" class="form-control" value="{{ $inspect->serial }}" readonly>
             </div>
 
             <div class="form-group">
                 <label>Location</label>
-                <input type="text" name="location" class="form-control" placeholder="Please enter location" required>
+                <input type="text" name="location" class="form-control" value="{{ $inspect->location }}" readonly>
             </div>
 
             <div class="form-group">
@@ -61,28 +63,20 @@
 
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Please enter location" required>
+                <input type="text" name="name" class="form-control" value="{{ $inspect->name }}" readonly>
             </div>
 
             <div class="form-group">
                 <label>Company</label>
-                <input type="text" name="company" class="form-control" placeholder="Please enter location" required>
+                <input type="text" name="company" class="form-control" value="{{ $inspect->company }}" readonly>
             </div>
 
 
             {{-- To choose Enginner for futher deveploment --}}
             <div class="form-group">
                 <label>Engineer For Inspection</label>
-                <select name="engineer" class="form-control" style="height: auto!important">
-
-                    <option class="hidden">-Select Engineer-</option>
-                    @foreach ($engineers as $engineer)
-                        {{-- {{ dd($engineers) }} --}}
-                        <option value="{{ $engineer->id }}">
-                            {{ $engineer->name }}
-                        </option>
-                    @endforeach
-                </select>
+                <input type="text" class="form-control" value="{{ $inspect->engineer->name }}"
+                    readonly>
             </div>
 
 

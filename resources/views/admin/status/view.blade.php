@@ -22,12 +22,11 @@
 
             <div class="main-panel">
                 @if (session()->has('message'))
-                <div class="alert alert-success">
-                    <button type="button" class="close" data-dismiss="alert">X</button>
-                    {{ session()->get('message') }}
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">X</button>
+                        {{ session()->get('message') }}
 
-                </div>
-
+                    </div>
                 @endif
                 <div class="content-wrapper">
                     <div class="row">
@@ -52,32 +51,43 @@
 
 
                                                 @foreach ($engineers as $engineer)
-                                                <tr>
-                                                    <td>{{ $engineer->name }}</td>
-                                                    <td>{{ $engineer->email }}</td>
-                                                    <td>
-                                                        <ul>
-                                                            @foreach ($engineer->inspects as $inspect)
-                                                            <li class="d-flex justify-content-between mb-3">
-                                                                <div><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 16 16" width="16" height="16">
-                                                                        <path fill-rule="evenodd"
-                                                                            d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path>
-                                                                    </svg><span class="ml-2">{{
-                                                                        $inspect->name }}</span></div>
-                                                                <span @class(['badge badge-primary'=>
-                                                                    $inspect->status == "In Progress", 'badge
-                                                                    badge-success'
-                                                                    =>
-                                                                    $inspect->status ==
-                                                                    "Approved"]) >{{
-                                                                    $inspect->status }}</span>
-                                                            </li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </td>
+                                                    <tr>
+                                                        <td>{{ $engineer->name }}</td>
+                                                        <td>{{ $engineer->email }}</td>
+                                                        <td>
+                                                            <ul>
+                                                                @foreach ($engineer->inspects as $inspect)
+                                                                    <li class="d-flex justify-content-between mb-3">
+                                                                        <div><svg xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 16 16" width="16"
+                                                                                height="16">
+                                                                                <path fill-rule="evenodd"
+                                                                                    d="M8 4a4 4 0 100 8 4 4 0 000-8z">
+                                                                                </path>
+                                                                            </svg><span
+                                                                                class="ml-2">{{ $inspect->name }}</span>
+                                                                        </div>
 
-                                                </tr>
+                                                                        <div>
+                                                                            <span
+                                                                                @class([
+                                                                                    'badge badge-primary' => $inspect->status == 'In Progress',
+                                                                                    'badge
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        badge-success' =>
+                                                                                        $inspect->status == 'Approved',
+                                                                                ])>{{ $inspect->status }}
+                                                                            </span>(<a
+                                                                                href="{{ route('admin.view.timeline', $inspect->id) }}">Timeline</a>)
+                                                                        </div>
+
+
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </td>
+
+
+                                                    </tr>
                                                 @endforeach
 
                                             </tbody>
