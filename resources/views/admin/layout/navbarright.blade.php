@@ -16,6 +16,23 @@
                 </ul>
             </div>
         </li>
+
+        {{-- <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#projects" aria-expanded="false" aria-controls="ui-basic">
+                <i class="typcn typcn-document-text menu-icon"></i>
+                <span class="menu-title">Project</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="projects">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('/projects') }}">List</a></li>
+                </ul>
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('/projects/create') }}">Create</a></li>
+                </ul>
+            </div>
+        </li> --}}
+
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <i class="typcn typcn-document-text menu-icon"></i>
@@ -24,12 +41,11 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{  url('/index') }}">Status</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('/index') }}">Status</a></li>
+                </ul>
+            </div>
         </li>
-    </ul>
-    </div>
-    </li>
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link" href="index.html">
             <i class="typcn typcn-device-desktop menu-icon"></i>
             <span class="menu-title">Dashboard</span>
@@ -118,6 +134,6 @@
             <i class="typcn typcn-mortar-board menu-icon"></i>
             <span class="menu-title">Documentation</span>
         </a>
-    </li>
+    </li> --}}
     </ul>
 </nav>
